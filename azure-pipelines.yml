@@ -19,12 +19,3 @@ steps:
     Dockerfile: '**/Dockerfile'
     tags: 'latest'
 
-- task: KubernetesManifest@1
-  displayName: "Start container on Azure Kubernetes Cluster (AKS)"
-  inputs:
-    action: 'deploy'
-    connectionType: 'azureResourceManager'
-    azureSubscriptionConnection: 'aks-service-connection'
-    azureResourceGroup: 'aks-rg'
-    kubernetesCluster: 'aks-demo'
-    manifests: 'application-manifest.yaml'
