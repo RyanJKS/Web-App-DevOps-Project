@@ -10,14 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-# - task: Docker@2
-#   displayName: "Build and push docker image to Docker Hub"
-#   inputs:
-#     containerRegistry: 'Docker Hub'
-#     repository: 'ryanjks/flask-web-app'
-#     command: 'buildAndPush'
-#     Dockerfile: '**/Dockerfile'
-#     tags: 'latest'
+- task: Docker@2
+  displayName: "Build and push docker image to Docker Hub"
+  inputs:
+    containerRegistry: 'Docker Hub'
+    repository: 'ryanjks/flask-web-app'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: 'latest'
 
 - task: KubernetesManifest@1
   displayName: "Start container on Azure Kubernetes Cluster (AKS)"
