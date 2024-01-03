@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+# Specifies the API version for Deployment.
+
+kind: Deployment
+# Indicates that this is a Deployment resource, used for managing stateless applications like Nginx.
+
+metadata:
+  name: flask-app-deployment
+  # The name of the Deployment.
+
+spec:
+  replicas: 2
+  # Specifies the desired number of replicas (Pods running the Nginx container).
+
+  selector:
+    matchLabels:
+      app: flask-app
+    # Selector to identify which Pods are part of this Deployment.
+
+  template:
+    metadata:
+      labels:
+        app: flask-app
+        # Labels applied to the Pods. These labels match the selector above.
+
+    spec:
+      containers:
+        - name: flask-app-container
+          # Name of the container within each Pod.
+
+          image: ryanjks/flask-web-app:v1.0
+          # The container image to use. This specifies your custom Nginx image.
+
+          ports:
+            - containerPort: 5000
+            # The port on which the container is listening.
+
+  strategy:
+    type: RollingUpdate
+    # Defines the strategy for updating Pods.
+
+    rollingUpdate:
+      maxUnavailable: 1
+      # Specifies the maximum number of Pods that can be unavailable during the update.
+
+      maxSurge: 1
+      # Specifies the maximum number of Pods that can be created over the desired number of Pods.
+
+---
+apiVersion: v1
+# Specifies the API version for Service.
+
+kind: Service
+# Indicates that this is a Service resource.
+
+metadata:
+  name: flask-app-service
+  # The name of the Service.
+
+spec:
+  selector:
+    app: flask-app
+    # Selector to route traffic to Pods labeled as 'app: flask-app'.
+
+  ports:
+    - protocol: TCP
+      port: 80
+      # The Service listens on port 80.
+
+      targetPort: 5000
+      # Routes traffic to port 5000 on the Pods.
+      # This is similar to the containerPort
+
+  type: ClusterIP
+  # The Service type is ClusterIP, which means it's only accessible within the cluster.
