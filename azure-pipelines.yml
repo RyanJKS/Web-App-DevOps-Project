@@ -24,7 +24,8 @@ steps:
   inputs:
     action: 'deploy'
     connectionType: 'azureResourceManager'
-    azureSubscriptionConnection: 'aks-service-connection'
+    azureSubscriptionConnection: 'Jhelan Suggun DevOps(3ba5faef-c736-4083-bb52-c58aec95e6a2)'
     azureResourceGroup: 'networking-resource-group'
     kubernetesCluster: 'terraform-aks-cluster'
+    namespace: 'aks-service-connection'
     manifests: 'application-manifest.yaml'
