@@ -14,7 +14,7 @@ steps:
   displayName: "Build and push docker image to Docker Hub"
   inputs:
     containerRegistry: 'Docker Hub'
-    repository: 'mayaaiuga/flask-app-sercrets'
+    repository: 'ryanjks/flask-web-app'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: 'latest'
