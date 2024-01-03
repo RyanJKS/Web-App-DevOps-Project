@@ -18,6 +18,7 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: 'latest'
+
 - task: KubernetesManifest@1
   displayName: "Start container on Azure Kubernetes Cluster (AKS)"
   inputs:
