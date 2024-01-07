@@ -514,8 +514,6 @@ This workflow ensures that new features are developed, reviewed, and deployed sy
 │   ├── networking-module
 │   ├── main.tf
 │   └── variables.tf
-├── azure-pipeline
-│   └── azure-pipelines.yml
 ├── images
 ├── kubernetes-manifest
 │   └── application-manifest.yaml

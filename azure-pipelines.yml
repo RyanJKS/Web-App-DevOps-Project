@@ -16,7 +16,7 @@ steps:
       containerRegistry: "Docker Hub"
       repository: "ryanjks/flask-web-app"
       command: "buildAndPush"
-      Dockerfile: "../Dockerfile"
+      Dockerfile: "**/Dockerfile"
       tags: "latest"
 
   - task: KubernetesManifest@1
