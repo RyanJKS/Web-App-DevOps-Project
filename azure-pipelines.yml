@@ -27,4 +27,4 @@ steps:
       azureSubscriptionConnection: "Jhelan Suggun DevOps(3ba5faef-c736-4083-bb52-c58aec95e6a2)"
       azureResourceGroup: "networking-resource-group"
       kubernetesCluster: "terraform-aks-cluster"
-      manifests: "kubernetes-manifest/application-manifest.yaml"
+      manifests: "./kubernetes-manifest/application-manifest.yaml"
