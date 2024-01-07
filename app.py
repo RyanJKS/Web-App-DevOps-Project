@@ -11,7 +11,7 @@ import pyodbc
 import os
 
 
-key_vault_url = "https://orders-db-keys.vault.azure.net/"
+key_vault_url = "https://orders-db-secret-keys.vault.azure.net/"
 
 # Initialise Flask App
 app = Flask(__name__)
@@ -22,8 +22,8 @@ credential = ManagedIdentityCredential()
 secret_client = SecretClient(vault_url=key_vault_url, credential=credential)
 
 # database connection 
-server = secret_client.get_secret("server").value
-database = secret_client.get_secret("database").value
+server = secret_client.get_secret("server-name").value
+database = secret_client.get_secret("database-name").value
 username = secret_client.get_secret("username").value
 password = secret_client.get_secret("password").value
 
