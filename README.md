@@ -500,7 +500,7 @@ This section guides developers on how to add new features to the application and
 2. **Verify Deployment on Production:**
     - Access the Kubernetes cluster: 
         ```sh
-        kubectl get pods.
+        kubectl get pods
         ```
     - Check for the updated pod running the latest changes.
     - Verify the feature is live and functioning as expected in the production environment by using port-forwarding using the pod name.
@@ -526,7 +526,6 @@ This workflow ensures that new features are developed, reviewed, and deployed sy
 - LICENSE
 - README.md
 - requirements.txt
-
 
 
 ## Contributors
