@@ -509,23 +509,24 @@ This workflow ensures that new features are developed, reviewed, and deployed sy
 
 ## File Structure
 
-|-- aks-terraform/
-  |-- aks-cluster-module/
-    |-- networking-module/
-      |-- main.tf
-      |-- variables.tf
-|-- images/
-|-- kubernetes-manifest/
-    |-- application-manifest.yaml
-|--static/
-|-- templates/
-    |-- orders.html
-|-- .gitignore
-|-- app.py
-|-- Dockerfile
-|-- LICENSE
-|-- README.md
-|-- requirements.txt
+- aks-terraform/
+  | - aks-cluster-module/
+    | - networking-module/
+      | - main.tf
+      | - variables.tf
+  | - images/
+  | - kubernetes-manifest/
+    | - application-manifest.yaml
+- static/
+- templates/
+  | - orders.html
+- .gitignore
+- app.py
+- Dockerfile
+- LICENSE
+- README.md
+- requirements.txt
+
 
 
 ## Contributors
