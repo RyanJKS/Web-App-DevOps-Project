@@ -14,7 +14,7 @@ variable "subscription_id" {
 }
 
 variable "tenant_id" {
-  description = "Azure tenant ID"
+  description = "Azure Tenant ID"
   type        = string
 }
 

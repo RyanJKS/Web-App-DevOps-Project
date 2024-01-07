@@ -2,7 +2,7 @@ apiVersion: apps/v1
 # Specifies the API version for Deployment.
 
 kind: Deployment
-# Indicates that this is a Deployment resource, used for managing stateless applications like Nginx.
+# Indicates that this is a Deployment resource, used for managing stateless applications.
 
 metadata:
   name: flask-app-deployment
@@ -10,7 +10,7 @@ metadata:
 
 spec:
   replicas: 2
-  # Specifies the desired number of replicas (Pods running the Nginx container).
+  # Specifies the desired number of replicas (Pods running the flask-app container).
 
   selector:
     matchLabels:
@@ -29,7 +29,7 @@ spec:
           # Name of the container within each Pod.
 
           image: ryanjks/flask-web-app:v1.0
-          # The container image to use. This specifies your custom Nginx image.
+          # The container image to use. This specifies your custom image.
 
           ports:
             - containerPort: 5000

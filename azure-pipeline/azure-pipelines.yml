@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: Docker@2
+    displayName: "Build and push docker image to Docker Hub"
+    inputs:
+      containerRegistry: "Docker Hub"
+      repository: "ryanjks/flask-web-app"
+      command: "buildAndPush"
+      Dockerfile: "../Dockerfile"
+      tags: "latest"
+
+  - task: KubernetesManifest@1
+    displayName: "Start container on Azure Kubernetes Cluster (AKS)"
+    inputs:
+      action: "deploy"
+      connectionType: "azureResourceManager"
+      azureSubscriptionConnection: "Jhelan Suggun DevOps(3ba5faef-c736-4083-bb52-c58aec95e6a2)"
+      azureResourceGroup: "networking-resource-group"
+      kubernetesCluster: "terraform-aks-cluster"
+      manifests: "./kubernetes-manifest/application-manifest.yaml"
