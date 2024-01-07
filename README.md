@@ -4,7 +4,7 @@
 1. [Overview](#overview)
 2. [Architecture](#architecture)
 3. [Web Application](#web-application)
-    - [Tech Stack](#tech-stack)
+    - [Tech Stack](#technology-stack)
 4. [Getting Started](#getting-started)
     - [Version Control with GIT](#version-control-with-git)
     - [Dockerization](#dockerization)
@@ -460,7 +460,10 @@ This section guides developers on how to add new features to the application and
         ```sh
         git checkout main
         ```
-    - Create a new branch: git checkout -b feature/add-delivery-date.
+    - Create a new branch: 
+        ```sh
+        git checkout -b feature/add-delivery-date.
+        ```
 
 2. **Develop the New Feature:**
     - Update necessary files (e.g., app.py, orders.html) to incorporate the delivery_date column.
@@ -509,23 +512,31 @@ This workflow ensures that new features are developed, reviewed, and deployed sy
 
 ## File Structure
 
-- aks-terraform/
-  | - aks-cluster-module/
+```bash
+|- aks-terraform/
+    |- aks-cluster-module/
+        |- main.tf
+        |- outputs.tf
+        |- variables.tf
     | - networking-module/
-      | - main.tf
-      | - variables.tf
-  | - images/
-  | - kubernetes-manifest/
-    | - application-manifest.yaml
-- static/
-- templates/
-  | - orders.html
-- .gitignore
-- app.py
-- Dockerfile
-- LICENSE
-- README.md
-- requirements.txt
+        |- main.tf
+        |- outputs.tf
+        |- variables.tf
+    | - main.tf
+    | - variables.tf
+|- images/
+|- kubernetes-manifest/
+    |-- application-manifest.yaml
+|- static/
+|- templates/
+    | - orders.html
+|- .gitignore
+|- app.py
+|- Dockerfile
+|- LICENSE
+|- README.md
+|- requirements.txt
+```
 
 
 ## Contributors
