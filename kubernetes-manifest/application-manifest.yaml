@@ -28,7 +28,7 @@ spec:
         - name: flask-app-container
           # Name of the container within each Pod.
 
-          image: ryanjks/flask-web-app:v3.0
+          image: ryanjks/flask-web-app:latest
           # The container image to use. This specifies your custom image.
           imagePullPolicy: Always
 
