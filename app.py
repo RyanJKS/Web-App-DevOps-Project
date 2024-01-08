@@ -17,7 +17,7 @@ key_vault_url = "https://orders-db-secret-keys.vault.azure.net/"
 app = Flask(__name__)
 
 # Set up Azure Key Vault client with Managed Identity
-credential = ManagedIdentityCredential(client_id="e875b94e-8878-4dc1-873f-756afbff7a9a")
+credential = ManagedIdentityCredential()
 
 secret_client = SecretClient(vault_url=key_vault_url, credential=credential)
 
