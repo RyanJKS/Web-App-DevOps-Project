@@ -414,10 +414,22 @@ As part of enhancing the security measures for the company's application, especi
 ### AKS Integration with Key Vault
 1. **Managed Identity for AKS:**
     - Enabled a managed identity for the AKS cluster, facilitating secure interactions with Azure Key Vault without storing credentials in the application.
+        ```sh
+        az aks update --resource-group <resource-group> --name <aks-cluster-name> --enable-managed-identity
+        ```
+    - Make a note of the clientID from the ouput of the query below:
+        ```sh
+        az aks show --resource-group <resource-group> --name <aks-cluster-name> --query identityProfile
+        ```
 
 2. **Permission Assignment to Managed Identity:**
 
     - The managed identity associated with the AKS cluster was granted the Key Vault Secrets Officer role, allowing it to retrieve and manage secrets stored in Key Vault.
+        ```sh
+        az role assignment create --role "Key Vault Secrets Officer" \
+        --assignee <managed-identity-client-id> \
+        --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+        ```
 
 ### Application Code Modification
 
