@@ -30,6 +30,7 @@ spec:
 
           image: ryanjks/flask-web-app:latest
           # The container image to use. This specifies your custom image.
+          imagePullPolicy: Always
 
           ports:
             - containerPort: 5000

@@ -4,17 +4,17 @@ FROM python:3.8-slim
 WORKDIR /app
 # TODO: Step 3 Copy the application files in the container
 COPY . /app
+
 # Install system dependencies and ODBC driver
-RUN apt-get update && apt-get install -y \
-    unixodbc unixodbc-dev odbcinst odbcinst1debian2 libpq-dev gcc && \
-    apt-get install -y gnupg && \
-    apt-get install -y wget && \
+RUN apt-get update && \
+    apt-get install -y unixodbc unixodbc-dev odbcinst odbcinst1debian2 libpq-dev gcc gnupg wget && \
     wget -qO- https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
     wget -qO- https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
     apt-get update && \
     ACCEPT_EULA=Y apt-get install -y msodbcsql18 && \
-    apt-get purge -y --auto-remove wget && \  
-    apt-get clean
+    apt-get purge -y --auto-remove wget && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install pip and setuptools
 RUN pip install --upgrade pip setuptools

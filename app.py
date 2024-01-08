@@ -13,9 +13,6 @@ import os
 
 key_vault_url = "https://orders-db-secret-keys.vault.azure.net/"
 
-# Initialise Flask App
-app = Flask(__name__)
-
 # Set up Azure Key Vault client with Managed Identity
 credential = ManagedIdentityCredential()
 
@@ -26,8 +23,10 @@ server = secret_client.get_secret("server-name").value
 database = secret_client.get_secret("database-name").value
 username = secret_client.get_secret("username").value
 password = secret_client.get_secret("password").value
-
 driver= '{ODBC Driver 18 for SQL Server}'
+
+# Initialise Flask App
+app = Flask(__name__)
 
 # Create the connection string
 connection_string=f'Driver={driver};\
