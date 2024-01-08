@@ -287,11 +287,11 @@ To share the application with external users, the following steps are undertaken
 
 #### Build Pipeline Configuration
 - **Build Trigger:** The pipeline triggers automatically on any push to the main branch of the GitHub repository.
+- **Docker Hub Integration:** A service connection between Azure DevOps and Docker Hub was established using a personal access token created on Docker Hub.
 - **Docker Build and Push:** A Docker task is included to build the application image and push it to Docker Hub, using the same image name and tagging conventions as in the local development environment.
 
 #### Release Pipeline and Integration
-- **Docker Hub Integration:** A service connection between Azure DevOps and Docker Hub was established using a personal access token created on Docker Hub.
-- **AKS Integration:** An Azure Kubernetes Service connection was set up within Azure DevOps to enable direct deployment to the AKS cluster.
+- **Azure Resource Manager Connection (AKS Integration)**: Establish a connection to Azure using the Service Principal (Manual) in order to connect to the AKS cluster.
 - **Deployment Configuration:** The pipeline is configured with a **Deploy to Kubernetes** task using the `kubectl deploy` command, targeting the AKS cluster. This task deploys the application using the Kubernetes manifest file from our source repository.
 
 #### Validation and Testing of the CI/CD Pipeline
@@ -431,27 +431,15 @@ As part of enhancing the security measures for the company's application, especi
         --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
         ```
 
-### Application Code Modification
-
-1. **Code Integration:**
-    - Integrated Azure Identity and Azure Key Vault libraries into the Python application code to enable secure communication with Azure Key Vault.
-
-2. **Utilizing Managed Identity:**
-    - Modified the application code to utilize managed identity credentials for retrieving database connection details from Key Vault, replacing previously hardcoded credentials.
-
-3. **Updating Docker Image Requirements:**
-    - Updated the application's Docker image requirements file to include the necessary libraries for Azure Key Vault integration, ensuring all dependencies are present in the Docker environment.
-
 ### Testing and Deployment
 1. **Local Testing:**
-
-    - Conducted thorough local testing of the modified application to confirm seamless integration with Azure Key Vault and successful retrieval of database credentials.
+    - Executed `docker-compose up` to build and run the application, ensuring the Key Vault secrets were correctly retrieved and used by the application.
 
 2. **Deployment via CI/CD Pipeline:**
     - Deployed the updated application to the AKS cluster using the existing Azure DevOps CI/CD pipeline.
 
 3. **End-to-End Testing in AKS:**
-    - Performed comprehensive testing within the AKS environment post-deployment, validating the functionality and the secure access to Key Vault secrets.
+    - Utilized `kubectl get pods` to check the status of the deployment and `kubectl port-forward` to test the application's connectivity and functionality.
 
 This integration with Azure Key Vault significantly elevates the security posture of our application by securely managing sensitive database credentials and eliminating the risks associated with hardcoded information. The managed identity approach ensures that the AKS cluster securely retrieves these credentials, maintaining the overall integrity and security of the application.
 
