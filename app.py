@@ -11,7 +11,7 @@ import pyodbc
 import os
 
 
-key_vault_url = "https://orders-db-secret-keys.vault.azure.net/"
+key_vault_url = "https://orders-database-keys.vault.azure.net/"
 
 # Set up Azure Key Vault client with Managed Identity
 credential = ManagedIdentityCredential()
