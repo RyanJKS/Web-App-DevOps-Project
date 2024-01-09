@@ -417,6 +417,10 @@ As part of enhancing the security measures for the company's application, especi
         ```sh
         az aks update --resource-group <resource-group> --name <aks-cluster-name> --enable-managed-identity
         ```
+    - (Optional): You might require to update your node pool as well in order to make the cluster become full system managed. Use the following command:
+        ```sh
+        az aks nodepool upgrade --resource-group <resource-group> --cluster-name <aks-cluster-name> --name <nodepool-name>
+        ```
     - Make a note of the clientID from the ouput of the query below:
         ```sh
         az aks show --resource-group <resource-group> --name <aks-cluster-name> --query identityProfile
