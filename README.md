@@ -148,7 +148,7 @@ Before beginning with Terraform, you need to have the following prerequisites in
 - A service principal created via Azure CLI to authenticate Terraform, which can be done with the command:
   
   ```sh
-  az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/YOUR_SUBSCRIPTION_ID"
+  az ad sp create-for-rbac -n <service-principal-name> --role="Contributor" --scopes="/subscriptions/YOUR_SUBSCRIPTION_ID"
 
   ```
 > Replace `YOUR_SUBSCRIPTION_ID` with your actual subscription ID. 
@@ -207,7 +207,7 @@ For deploying our web application to the Kubernetes Cluster on Azure, I defined 
 
 - **Deployment Manifest**: This part of the manifest outlines how our application's Pods should be created and managed. This configuration ensures that our application remains consistently available and scalable.
   - **Replicas:** Set to 2, ensuring redundancy and load distribution.
-  - **Image:** `ryanjks/flask-web-app:v1.0`, specifying the Docker image for the Pods.
+  - **Image:** `ryanjks/flask-web-app:latest`, specifying the Docker image for the Pods.
   - **Container Port:** 5000, where the application listens for traffic.
 
 - **Service Manifest**: The Service manifest establishes a stable network interface for interacting with the application. By configuring it as a **ClusterIP service**, we expose our application internally within the cluster on a stable IP address. The service listens on **port 80** and routes traffic to **port 5000** on the Pods. This setup enables internal communication and load balancing across the application's replicas.
@@ -224,26 +224,30 @@ This strategy aligns well with our need for high availability and seamless updat
 #### Testing and Validation
 Post-deployment, we conducted several tests to validate the functionality and reliability of the application within the AKS cluster using the following commands:
 
-1. **Check Current Context**: Ensure you're operating in the correct Kubernetes context.`
-```sh
-kubectl config current-context
-```
-2. **Switch Context:** If necessary, switch to the correct Kubernetes cluster context.
-```sh
-kubectl config use-context [your-aks-cluster-context]
-```
-3. **Get Deployments:** Check the status of your deployments.
-```sh
-kubectl get deployments
-```
-4. **Get Services:** Verify that the service is running and note the internal IP.
-```sh
-kubectl get services
-```
-5. **Port Forwarding:** For local testing, you can forward a local port to a port on the Pod.
-```sh
-kubectl port-forward [pod-name] 5000:5000
-```
+1. **Merge Cluster:** Ensure that the AKS cluster has been merged to your local `.kube` file such that you can have access to it.
+    ```sh
+    az aks get-credentials --resource-group [resource_group_name] --name [aks_cluster_name]
+    ```
+2. **Check Current Context**: Ensure you're operating in the correct Kubernetes context.`
+    ```sh
+    kubectl config current-context
+    ```
+3. **Switch Context:** If necessary, switch to the correct Kubernetes cluster context.
+    ```sh
+    kubectl config use-context [your-aks-cluster-context]
+    ```
+4. **Get Deployments:** Check the status of your deployments.
+    ```sh
+    kubectl get deployments
+    ```
+5. **Get Services:** Verify that the service is running and note the internal IP.
+    ```sh
+    kubectl get services
+    ```
+6. **Port Forwarding:** For local testing, you can forward a local port to a port on the Pod.
+    ```sh
+    kubectl port-forward [pod-name] 5000:5000
+    ```
 
 #### Application Distribution and Access
 **Internal Access**
