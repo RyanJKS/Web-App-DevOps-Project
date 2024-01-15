@@ -1,5 +1,20 @@
 # Web App Azure DevOps
 
+![Git](https://img.shields.io/badge/Git-F05032.svg?style=for-the-badge&logo=git&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC.svg?style=for-the-badge&logo=terraform&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Azure DevOps](https://img.shields.io/badge/Azure_DevOps-0078D7.svg?style=for-the-badge&logo=azure-devops&logoColor=white)
+![Azure Kubernetes Service](https://img.shields.io/badge/Azure_Kubernetes_Service-326CE5.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white)
+![Azure Key Vault](https://img.shields.io/badge/Azure_Key_Vault-0078D4.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white)
+![Docker Hub](https://img.shields.io/badge/Docker_Hub-2496ED.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Azure Monitor](https://img.shields.io/badge/Azure_Monitor-0078D4.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white)
+![Azure Application Insights](https://img.shields.io/badge/Azure_Application_Insights-0078D4.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white)
+![Azure Log Analytics](https://img.shields.io/badge/Azure_Log_Analytics-0078D4.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white)
+
+## Introduction
+Welcome to our DevOps pipeline project, an ambitious endeavor to transform a modest web application into a dynamic, scalable, and efficient development powerhouse. This project marks a crucial step in the evolution of the company's delivery operations system, shifting from a small-scale application to a comprehensive and collaborative development environment suitable for a globally expanding corporate framework.
+
 ## Table of Contents
 1. [Overview](#overview)
 2. [Architecture](#architecture)
